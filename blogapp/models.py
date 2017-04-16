@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+from django.urls import reverse
+
+
 
 class Category(models.Model):    #分类。django要求继承model.Model类。
     name = models.CharField(max_length=100)
@@ -33,3 +35,7 @@ class Post(models.Model):    #文章数据库表
 
     def __str__(self):
         return self.title
+
+    #自定义 get_absolute_url 方法
+    def get_absolute_url(self):
+        return reverse('blogapp:detail', kwargs={'pk': self.pk})
