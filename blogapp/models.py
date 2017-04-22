@@ -24,7 +24,7 @@ class Post(models.Model):    #文章数据库表
     modified_time = models.DateTimeField()    #文章最后修改时间。
     excerpt = models.CharField(max_length=200, blank=True)    #文章摘要，允许为空（blank=True）。
     
-    #分类调用，一对多，一篇文章对应一个分类。
+    #分类调用，一对多，一个标签下可以有多篇文章(ForeignKey)。
     category = models.ForeignKey(Category)
     #标签调用，多对一（一篇文章下有多个标签，ManyToManyField）。
     tags = models.ManyToManyField(Tag, blank=True)
@@ -39,3 +39,6 @@ class Post(models.Model):    #文章数据库表
     #自定义 get_absolute_url 方法
     def get_absolute_url(self):
         return reverse('blogapp:detail', kwargs={'pk': self.pk})
+
+    class Meta:
+        ordering = ['-created_time']    #以ordering属性来指定文章的排序方式。

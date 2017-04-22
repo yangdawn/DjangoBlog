@@ -20,7 +20,7 @@ def detail(request, pk):
                                       'markdown.extensions.toc',
                                   ])
     form = CommentForm()
-    comment_list = post.coment_set.all()
+    comment_list = post.comment_set.all()
     context = {'post': post,
                'form': form,
                'comment_list': comment_list
