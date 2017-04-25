@@ -2,10 +2,10 @@ from django import template
 
 from ..models import Post, Category
 
-register = template.Library()
+register = template.Library()    #实例化一个template.Library
 
 
-@register.simple_tag
+@register.simple_tag    #函数装饰为register.simple_tag
 def get_recent_posts(num=5):
     return Post.objects.all()[:num]
 
