@@ -19,6 +19,7 @@ def detail(request, pk):
                                       'markdown.extensions.codehilite',
                                       'markdown.extensions.toc',
                                   ])
+    #文章详情页评论视图。                              
     form = CommentForm()
     comment_list = post.comment_set.all()
     context = {'post': post,
